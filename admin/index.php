@@ -7,4 +7,6 @@ include "view/nav.php";
 include "view/footer.php";
 
 
+// include "view/list_category.php";
+include "view/list_user.php";
 include "model/pdo.php";
