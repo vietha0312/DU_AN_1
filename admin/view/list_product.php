@@ -1,5 +1,6 @@
 <?php include_once "header.php" ?>
 <?php include_once "nav.php" ?>
+
 <div class="page-wrapper">
     <div class="page-breadcrumb">
         <div class="row">
@@ -100,7 +101,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal">Chưa chăc chắn</button>
-                                                        <button type="button" class="btn btn-danger btn-lg"> <a href="./index.php?act=delete_product&id_pro=<?= $pro['id_pro'] ?>" style="color:aliceblue "><span>Chắc chắn rồi</span></a></button>
+                                                        <button type="button" class="btn btn-danger btn-lg"> <a href="./index.php?act=delete_product&id_pro=<?= $pro['id_pro'] ?>" style="color:aliceblue " onclick="showDeleteSuccess()"><span>Chắc chắn rồi</span></a></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,5 +138,6 @@
      ****************************************/
     $('#zero_config').DataTable();
 </script>
+
 
 <?php include_once "footer.php" ?>

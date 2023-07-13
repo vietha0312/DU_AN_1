@@ -25,6 +25,7 @@
 <script src="view/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 <script src="view/assets/extra-libs/DataTables/datatables.min.js"></script>
 <script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+
 </body>
 
 </html>
