@@ -27,7 +27,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Basic Datatable</h5>
+                        <h5 class="card-title">Danh sách sản phẩm</h5>
                         <div class="filter">
                             <form action="./index.php?act=list_product" method="POST">
                                 <select name="idcate" class="sel-filter">
@@ -104,16 +104,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
+
     </div>
 </div>
 <script>
