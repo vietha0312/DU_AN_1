@@ -83,6 +83,13 @@ if (isset($_GET['act'])) {
 
 
             break;
+        case "delete_product":
+            if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
+                $id_pro = $_GET['id_pro'];
+                remove_pro($id_pro);
+            }
+            header('location:index.php?act=list_product');
+            break;
     }
 } else {
 }
