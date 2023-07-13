@@ -84,11 +84,47 @@ if (isset($_GET['act'])) {
 
             break;
         case "delete_product":
+
+
             if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
                 $id_pro = $_GET['id_pro'];
                 remove_pro($id_pro);
             }
             header('location:index.php?act=list_product');
+            break;
+        case "edit_product":
+
+
+            if (isset($_GET['id_pro']) && $_GET['id_pro'] > 0) {
+                $id_pro = $_GET['id_pro'];
+                $pro = loadone_pro($id_pro);
+            }
+
+            $ds_loai = loadall_cate();
+            render(
+                'update_product',
+                ['ds_loai' => $ds_loai, 'pro' => $pro]
+            );
+
+
+            break;
+        case "update_product":
+            if (isset($_POST['btn_update']) && $_POST['btn_update'] > 0) {
+                $id_pro = $_POST['id_pro'];
+                $idcate = $_POST['idcate'];
+                $name_pro = $_POST['name_pro'];
+                $price = $_POST['price'];
+                $discount = $_POST['discount'];
+                $short_des = $_POST['short_des'];
+                $detail_des = $_POST['detail_des'];
+                $img_pro = $_FILES['img_pro']['name'];
+                $target_dir = "./uploads/";
+                $target_file = $target_dir . basename($_FILES["img_pro"]["name"]);
+                (move_uploaded_file($_FILES["img_pro"]["tmp_name"], $target_file));
+                update_pro($id_pro, $name_pro, $price, $discount, $short_des, $detail_des, $img_pro, $idcate);
+                echo '<script>alert("Cập nhật sản phẩm thành công!")</script>';
+                header('location:index.php?act=list_product');
+            }
             break;
     }
 } else {

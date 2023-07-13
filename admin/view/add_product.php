@@ -77,55 +77,60 @@
                                         <input type="text" name="discount" min="1" max="100" class="form-control" placeholder="Nhập số % từ 1 đến 100" required>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Hình ảnh</label>
-                                    <div class="col-sm-9">
-                                        <input type="file" name="img_pro" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Mô tả</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="short_des" class="form-control" placeholder="Mô tả tóm tắt sản phẩm" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label">Mô tả chi tiết</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control ckeditor" rows="5" required name="detail_des" id="detail_des" placeholder="Mô tả đầy đủ chi tiết sản phẩm"></textarea>
-                                    </div>
-                                </div>
 
+                                <div class="form-group row">
+                                    <label for="email1" class="col-sm-3 text-right control-label col-form-label"">File Upload</label>
+                                    <div class=" col-md-9">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="validatedCustomFile" name="img_pro" required>
+                                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email1" class="col-sm-3 text-right control-label col-form-label">Mô tả</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="short_des" class="form-control" placeholder="Mô tả tóm tắt sản phẩm" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email1" class="col-sm-3 text-right control-label col-form-label">Mô tả chi tiết</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control ckeditor" rows="5" required name="detail_des" id="detail_des" placeholder="Mô tả đầy đủ chi tiết sản phẩm"></textarea>
+                                </div>
                             </div>
 
-                            <div class="wrap-btn">
-                                <input type="submit" name="btn_add" class="btn btn-lg btn-block btn-outline-success" id="ts-success" value="Submit">
-
-                            </div>
-                        </form>
-                        <h3 class="text-success fs-6 mt-3 fw-bolder">
-                            <?php
-                            if (isset($noticepro) && $noticepro != "") {
-                                echo $noticepro;
-                            }
-                            ?>
-                        </h3>
                     </div>
 
-                </div>
+                    <div class="wrap-btn">
+                        <input type="submit" name="btn_add" class="btn btn-lg btn-block btn-outline-success" id="ts-success" value="Submit">
 
+                    </div>
+                    </form>
+                    <h3 class="text-success fs-6 mt-3 fw-bolder">
+                        <?php
+                        if (isset($noticepro) && $noticepro != "") {
+                            echo $noticepro;
+                        }
+                        ?>
+                    </h3>
+                </div>
 
             </div>
 
-            <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-            </footer>
 
         </div>
 
+        <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+        </footer>
+
     </div>
 
+</div>
 
 
 
-    <?php include_once "footer.php" ?>
+
+<?php include_once "footer.php" ?>
