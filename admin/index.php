@@ -147,6 +147,20 @@ if (isset($_GET['act'])) {
             }
             header('location:index.php?act=list_category');
             break;
+        case "add_category":
+
+            if (isset($_POST['btn_add']) && ($_POST['btn_add'])) {
+                $name_cate = $_POST['name_cate'];
+                if ($name_cate == null) {
+                    echo '<script>alert("Vui lòng nhập đầy đủ !")</script>';
+                } else {
+                    add_cate($name_cate);
+                    echo '<script>alert("Thêm loại thành công!")</script>';
+                }
+            }
+            render('add_category');
+
+            break;
     }
 } else {
 }
