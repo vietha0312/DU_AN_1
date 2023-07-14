@@ -126,6 +126,19 @@ if (isset($_GET['act'])) {
                 header('location:index.php?act=list_product');
             }
             break;
+
+
+        case "list_category":
+
+
+            $ds_loai = loadall_cate();
+            render(
+                'list_category',
+                ['ds_loai' => $ds_loai]
+            );
+
+
+            break;
     }
 } else {
 }

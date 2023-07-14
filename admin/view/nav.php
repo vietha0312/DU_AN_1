@@ -204,7 +204,7 @@
 
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Danh mục</span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách danh mục</span></a></li>
+                            <li class="sidebar-item"><a href="index.php?act=list_category" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Danh sách danh mục</span></a></li>
                             <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Thêm danh mục </span></a></li>
                         </ul>
                     </li>
