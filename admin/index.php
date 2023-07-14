@@ -156,10 +156,33 @@ if (isset($_GET['act'])) {
                 } else {
                     add_cate($name_cate);
                     echo '<script>alert("Thêm loại thành công!")</script>';
+                    header('location:index.php?act=list_category');
                 }
             }
             render('add_category');
 
+            break;
+        case "edit_category":
+
+
+            if (isset($_GET['id_cate']) && ($_GET['id_cate'] > 0)) {
+                $id_cate = $_GET['id_cate'];
+                $one_loai = loadone_cate($id_cate);
+            }
+            render(
+                'update_category',
+                ['one_loai' => $one_loai]
+            );
+
+
+            break;
+        case "update_category":
+            if (isset($_POST['btn_update']) && ($_POST['btn_update'])) {
+                $id_cate = $_POST['id_cate'];
+                $name_cate = $_POST['name_cate'];
+                capnhat_cate($id_cate, $name_cate);
+            }
+            header('location:index.php?act=list_category');
             break;
     }
 } else {

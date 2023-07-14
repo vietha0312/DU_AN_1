@@ -8330,6 +8330,11 @@ html[dir="ltr"] body .p-l-0 {
 .reverse-mode .right-part {
   margin-left: 0px;
   margin-right: 260px; }
+  .button-container {
+    float: left;
+    width: 50%;
+}
+
 
 /*******************
  Vertical layout
