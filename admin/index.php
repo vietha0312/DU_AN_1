@@ -139,6 +139,14 @@ if (isset($_GET['act'])) {
 
 
             break;
+
+        case "delete_cate":
+            if (isset($_GET['id_cate']) && ($_GET['id_cate'] > 0)) {
+                $id_cate = $_GET['id_cate'];
+                delete_cate($id_cate);
+            }
+            header('location:index.php?act=list_category');
+            break;
     }
 } else {
 }
