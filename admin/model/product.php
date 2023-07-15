@@ -55,3 +55,10 @@ function filter_by_cate($id_pro, $idcate)
     $listpro = pdo_query($sql);
     return $listpro;
 }
+function is_product_name_exists($name_pro)
+{
+    $sql = "SELECT COUNT(*) AS count FROM product WHERE name_pro = :name_pro";
+    $result = pdo_execute($sql, array(':name_pro' => $name_pro));
+
+    return $result['count'] > 0;
+}

@@ -63,26 +63,38 @@ if (isset($_GET['act'])) {
 
                 $allowed_extensions = array("jpg", "jpeg", "png", "gif");
 
-                (move_uploaded_file($_FILES["img_pro"]["tmp_name"], $target_file));
-                if ($name_pro == null || $price == null || $short_des == null || $idcate == null) {
-                    echo '<script>alert("Vui lòng nhập đầy đủ nội dung !")</script>';
-                } elseif ($price <= 0) {
-                    echo '<script>alert("Giá nhập không đúng !")</script>';
-                } elseif (!in_array($extension, $allowed_extensions)) {
-                    echo '<script>alert("File ảnh không phù hợp !")</script>';
-                } else {
+                $errors = array();
+
+                if (empty($name_pro) || empty($price) || empty($short_des) || empty($idcate)) {
+                    $errors[] = "Vui lòng nhập đầy đủ nội dung!";
+                }
+
+
+                if (!is_numeric($price) || $price <= 0) {
+                    $errors[] = "Giá nhập không đúng!";
+                }
+
+
+                if (!in_array($extension, $allowed_extensions)) {
+                    $errors[] = "File ảnh không phù hợp!";
+                }
+
+                if (empty($errors)) {
+                    move_uploaded_file($_FILES["img_pro"]["tmp_name"], $target_file);
                     add_pro($name_pro, $price, $discount, $img_pro, $short_des, $detail_des, $idcate);
-                    echo '<script>alert("Thêm sản phẩm thành công !")</script>';
+                    echo '<script>alert("Thêm sản phẩm thành công!")</script>';
+                } else {
+                    foreach ($errors as $error) {
+                        echo '<script>alert("' . $error . '")</script>';
+                    }
                 }
             }
+
             $ds_loai = loadall_cate();
             render(
                 'add_product',
                 ['ds_loai' => $ds_loai]
             );
-
-
-            break;
         case "delete_product":
 
 
@@ -109,22 +121,61 @@ if (isset($_GET['act'])) {
 
             break;
         case "update_product":
-            if (isset($_POST['btn_update']) && $_POST['btn_update'] > 0) {
-                $id_pro = $_POST['id_pro'];
-                $idcate = $_POST['idcate'];
+            if (isset($_POST['btn_add']) && ($_POST['btn_add'])) {
                 $name_pro = $_POST['name_pro'];
                 $price = $_POST['price'];
                 $discount = $_POST['discount'];
                 $short_des = $_POST['short_des'];
                 $detail_des = $_POST['detail_des'];
+                $idcate = $_POST['idcate'];
                 $img_pro = $_FILES['img_pro']['name'];
                 $target_dir = "./uploads/";
                 $target_file = $target_dir . basename($_FILES["img_pro"]["name"]);
-                (move_uploaded_file($_FILES["img_pro"]["tmp_name"], $target_file));
-                update_pro($id_pro, $name_pro, $price, $discount, $short_des, $detail_des, $img_pro, $idcate);
-                echo '<script>alert("Cập nhật sản phẩm thành công!")</script>';
-                header('location:index.php?act=list_product');
+                $extension = pathinfo($img_pro, PATHINFO_EXTENSION);
+
+                $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+
+                $errors = array();
+
+
+                if (is_product_name_exists($name_pro)) {
+                    $errors[] = "Tên sản phẩm đã tồn tại. Vui lòng chọn tên khác!";
+                }
+
+
+                if (empty($name_pro) || empty($price) || empty($short_des) || empty($idcate)) {
+                    $errors[] = "Vui lòng nhập đầy đủ nội dung!";
+                }
+
+
+                if (!is_numeric($price) || $price <= 0) {
+                    $errors[] = "Giá nhập không đúng!";
+                }
+
+
+                if (!in_array($extension, $allowed_extensions)) {
+                    $errors[] = "File ảnh không phù hợp!";
+                }
+
+                if (empty($errors)) {
+
+                    move_uploaded_file($_FILES["img_pro"]["tmp_name"], $target_file);
+
+
+                    add_pro($name_pro, $price, $discount, $img_pro, $short_des, $detail_des, $idcate);
+                    echo '<script>alert("Thêm sản phẩm thành công!")</script>';
+                } else {
+                    foreach ($errors as $error) {
+                        echo '<script>alert("' . $error . '")</script>';
+                    }
+                }
             }
+
+            $ds_loai = loadall_cate();
+            render(
+                'add_product',
+                ['ds_loai' => $ds_loai]
+            );
             break;
 
 
@@ -151,15 +202,28 @@ if (isset($_GET['act'])) {
 
             if (isset($_POST['btn_add']) && ($_POST['btn_add'])) {
                 $name_cate = $_POST['name_cate'];
-                if ($name_cate == null) {
-                    echo '<script>alert("Vui lòng nhập đầy đủ !")</script>';
-                } else {
+
+                $errors = array();
+
+
+                if (empty($name_cate)) {
+                    $errors[] = "Vui lòng nhập đầy đủ thông tin!";
+                }
+
+                if (empty($errors)) {
                     add_cate($name_cate);
                     echo '<script>alert("Thêm loại thành công!")</script>';
                     header('location:index.php?act=list_category');
+                    exit();
+                } else {
+                    foreach ($errors as $error) {
+                        echo '<script>alert("' . $error . '")</script>';
+                    }
                 }
             }
+
             render('add_category');
+
 
             break;
         case "edit_category":

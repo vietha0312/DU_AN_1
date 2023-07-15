@@ -84,10 +84,9 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Mã SP</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Giá</th>
-
+                                        <th>Mã Danh Mục</th>
+                                        <th>Hãng điện thoại</th>
+                                        <th>Thao tác</th>
 
                                     </tr>
                                 </tfoot>
