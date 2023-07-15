@@ -74,14 +74,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             // CONTROLLER ĐĂNG KÝ TÀI KHOẢN:
 
-        case "register":
-
+        case "login":
+            include "view/user/login_register.php";
             break;
             // CONTROLLER ĐĂNG NHẬP TÀI KHOẢN:
 
-        case "login":
-            break;
-            // đăng xuất tài khoản: 
+
         case 'logout':
 
             break;
@@ -119,17 +117,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/viewcart.php";
             break;
         case "edit":
-            // $total_price = 0;
-            foreach ($_SESSION['mycart'] as $k => $v) {
-                if ($_POST["code"] == $k) {
-                    if ($_POST["quantity"] == '0') {
-                        array_splice($_SESSION['mycart'], $k, 1);
-                    } else {
-                        $_SESSION['mycart'][$k][4] = $_POST["quantity"];
-                        $_SESSION['mycart'][$k][5] = $_SESSION['mycart'][$k][3] * $_SESSION['mycart'][$k][4];
-                    }
-                }
-            }
+
             break;
             // thêm vào giỏ hàng
         case 'addtocart':
@@ -137,23 +125,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
             // xóa sản phẩm trong giỏ hàng
         case 'removecart':
-            if (isset($_GET['idcart'])) {
-                $idcart = $_GET['idcart'];
-                array_splice($_SESSION['mycart'], $idcart, 1);
-            } else {
-                $_SESSION['mycart'] = [];
-            }
-            header('location: index.php?act=viewcart');
+
             break;
             // tạo bill 
         case 'bill':
-            if (isset($_SESSION['errorMessage'])) {
-                echo "<script type='text/javascript'>
-                        alert('" . $_SESSION['errorMessage'] . "');
-                      </script>";
-                unset($_SESSION['errorMessage']);
-            }
-            include "view/giohang/bill.php";
+
             break;
         case 'pay':
             include "view/qr.php";
