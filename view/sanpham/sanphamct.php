@@ -153,8 +153,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="jb-product_slider">
-                    <?php foreach ($similar_pro as $pro) { ?>
-                        <!-- Sản phẩm -->
+                    <?php foreach ($similar_pro as $pro) { ?> <!-- Sản phẩm -->
                         <div class="jb-slide-item">
                             <div class="jb-single_product">
                                 <div class="product-img">

@@ -248,6 +248,16 @@ if (isset($_GET['act'])) {
             }
             header('location:index.php?act=list_category');
             break;
+        case 'chart':
+
+            $liststatis = loadall_statis();
+            render(
+                'chart',
+                ['chart' => $liststatis]
+            );
+
+
+            break;
     }
 } else {
 }
