@@ -9,7 +9,7 @@
                 <!-- Begin Header Information Area -->
                 <div class="col-lg-3 col-md-6 col-sm-4">
                     <div class="header-info_area">
-                        <span>Chào mừng đến với UltraPhone!</span>
+
                     </div>
                 </div>
                 <!-- Header Information Area End Here -->
@@ -72,7 +72,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 order-1 order-lg-1 order-sm-1">
                     <div class="hm-logo">
                         <a href="index.php">
-                            <img src="./src/image/menu/logo/logo.png" alt="Logo Ultraphone" />
+                            <img src="/src/image/image/brand/logo.png" width="150px" alt="Logo phoneshop" />
                         </a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                                     <a href="index.php?act=contact">Liên hệ</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?act=question">Hỏi đáp</a>
+                                    <a href="index.php?act=support">Hỏi đáp</a>
                                 </li>
                             </ul>
                         </nav>
