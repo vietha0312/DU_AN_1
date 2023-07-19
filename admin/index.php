@@ -255,6 +255,7 @@ if (isset($_GET['act'])) {
                 'chart',
                 ['chart' => $liststatis]
             );
+            break;
         case 'list_user':
 
 

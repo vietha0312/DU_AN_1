@@ -50,7 +50,7 @@
                                 <div class="form-group row">
                                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Người đặt</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="user_name" class="form-control" value="<?= $user_name ?>">
+                                        <input type="text" name="user_name" class="form-control" value="<?= $user_name ?>" disabled>
                                     </div>
 
 
@@ -58,7 +58,7 @@
                                 <div class="form-group row">
                                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Địa chỉ nhận hàng</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="full_name" class="form-control" value="<?= $address ?>">
+                                        <input type="text" name="full_name" class="form-control" value="<?= $address ?>" disabled>
                                     </div>
 
 
@@ -66,7 +66,7 @@
                                 <div class="form-group row">
                                     <label for="email1" class="col-sm-3 text-right control-label col-form-label">Ngày đặt</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="email_user" class="form-control" value="<?= $order_date ?>">
+                                        <input type="text" name="email_user" class="form-control" value="<?= $order_date ?>" disabled>
                                     </div>
 
 
@@ -146,34 +146,7 @@
                     </div>
 
                 </div>
-                <div class="table-content table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="jb-product-thumbnail">Hình ảnh</th>
-                                <th class="cart-product-name">Sản phẩm</th>
-                                <th class="jb-product-price">Đơn giá</th>
-                                <th class="jb-product-quantity">Số lượng</th>
-                                <th class="jb-product-subtotal">Thành tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $id = $_GET['idbill'];
-                            $bill = load_cart_all($id);
 
-                            foreach ($bill as $value) {
-                            ?>
-                                <tr>
-                                    <td class="jb-product-thumbnail"><img src="../admin/uploads/<?= $value['img_pro'] ?>" alt="Ultraphone Product" width="80px"></img></td>
-                                    <td class="jb-product-name"><a href=""><?= $value['name_pro'] ?></a></td>
-                                    <td class="jb-product-price"><span class="amount"><?= $value['price_pro'] ?> ₫</span></td>
-                                    <td class="quantity"><?= $value['quantity'] ?></td>
-                                    <td class="product-subtotal"><span class="amount"><?= $value['total_amount'] ?>₫</span></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
 
             </div>
 
