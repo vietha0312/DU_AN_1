@@ -306,8 +306,34 @@ if (isset($_GET['act'])) {
                 'list_bill',
                 ['listbill' => $listbill]
             );
+            break;
+
+        case 'edit_bill':
+
+            if (isset($_GET['idbill']) && ($_GET['idbill']) > 0) {
+                $idbill = $_GET['idbill'];
+                $one_bill = loadone_bill($idbill);
+            }
+            render(
+                'update_bill',
+                ['one_bill' => $one_bill]
+            );
 
 
+
+            break;
+        case 'update_bill':
+            if (isset($_POST['btn_update']) && ($_POST['btn_update'])) {
+                $id_bill = $_POST['id_bill'];
+                $status = $_POST['status'];
+                $status_pay = $_POST['status_pay'];
+                if ($status == 3) {
+                    $status_pay = 1;
+                }
+                update_bill($id_bill, $status, $status_pay);
+                echo '<script>alert("Cập nhật đơn hàng thành công!")</script>';
+                header('location:index.php?act=list_bill');
+            }
             break;
     }
 } else {
