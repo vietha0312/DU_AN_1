@@ -263,7 +263,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/giohang/viewcart.php";
             break;
 
-            // xóa sản phẩm trong giỏ hàng
+
         case 'removecart':
             if (isset($_GET['idcart'])) {
                 $idcart = $_GET['idcart'];
@@ -274,7 +274,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             header('location: index.php?act=viewcart');
             break;
 
-
+        case 'bill':
+            if (isset($_SESSION['errorMessage'])) {
+                echo "<script type='text/javascript'>
+                            alert('" . $_SESSION['errorMessage'] . "');
+                          </script>";
+                unset($_SESSION['errorMessage']);
+            }
+            include "view/giohang/bill.php";
+            break;
 
         default:
             include "view/content.php";

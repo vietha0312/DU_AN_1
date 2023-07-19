@@ -13,7 +13,7 @@ $total_amount = total_amount();
                 <!-- Begin Header Information Area -->
                 <div class="col-lg-3 col-md-6 col-sm-4">
                     <div class="header-info_area">
-
+                        <span>Chào mừng đến với UltraPhone!</span>
                     </div>
                 </div>
                 <!-- Header Information Area End Here -->
@@ -76,7 +76,7 @@ $total_amount = total_amount();
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 order-1 order-lg-1 order-sm-1">
                     <div class="hm-logo">
                         <a href="index.php">
-                            <img src="/src/image/image/brand/logo.png" width="150px" alt="Logo phoneshop" />
+                            <img src="./src/image/menu/logo/logo.png" alt="Logo Ultraphone" />
                         </a>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ $total_amount = total_amount();
                                     <a href="index.php?act=contact">Liên hệ</a>
                                 </li>
                                 <li>
-                                    <a href="index.php?act=support">Hỏi đáp</a>
+                                    <a href="index.php?act=question">Hỏi đáp</a>
                                 </li>
                             </ul>
                         </nav>
@@ -122,7 +122,71 @@ $total_amount = total_amount();
                 </div>
 
                 <div class="col-lg-2 col-md-3 col-sm-6 col-6 order-1 order-lg-3 order-sm-1">
+                    <div class="hm-minicart_area">
+                        <ul>
+                            <li>
+                                <a href="index.php?act=viewcart">
+                                    <div class="minicart-icon">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span class="item-count"><?= $count ?></span>
+                                    </div>
+                                    <div class="minicart-text"><span>Giỏ hàng</span></div>
+                                    <div class="item_total"><span><?= number_format($total_amount) ?>₫</span></div>
+                                </a>
+                                <ul class="minicart-body">
+                                    <?php if (empty($_SESSION['mycart'])) {
+                                        $emptypro = "Bạn chưa thêm sản phẩm nào vào giỏ hàng !";  ?>
+                                        <div class="mt-5">
+                                            <p class="text-danger fw-bold" style="font-size: 15px;"><?= $emptypro ?></p>
+                                        </div>
 
+                                        <?php } else {
+                                        foreach ($_SESSION['mycart'] as $cart) {  ?>
+                                            <li class="minicart-item_area">
+                                                <div class="minicart-single_item">
+                                                    <div class="minicart-img">
+                                                        <a href="index.php?act=prodetail&idpro=<?= $cart[0] ?>">
+                                                            <img src="admin/uploads/<?= $cart[2] ?>" alt="UltraPhone Product" width="50px" ; />
+                                                        </a>
+                                                        <span class="product-quantity"><?= $cart[4] ?>x</span>
+                                                    </div>
+                                                    <div class="minicart-content">
+                                                        <div class="product-name">
+                                                            <h6>
+                                                                <a href="index.php?act=prodetail&idpro=<?= $cart[0] ?>">
+                                                                    <?= $cart[1] ?>
+                                                                </a>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="price-box">
+                                                            <span class="new-price"> <?= number_format($cart[3]) ?>₫</span>
+                                                        </div>
+                                                        <!-- <div class="attributes_content">
+                                                    <span>Dimension: 40x60cm</span>
+                                                </div> -->
+                                                    </div>
+                                                </div>
+                                            </li>
+                                    <?php }
+                                    }  ?>
+                                    <li>
+
+                                        <div class="price_content">
+                                            <div class="cart-subtotals">
+                                                <div class="cart-total subtotal-list">
+                                                    <span class="label">Tổng tiền</span>
+                                                    <span class="value"><?= number_format($total_amount) ?>₫</span>
+                                                </div>
+                                            </div>
+                                            <div class="minicart-button">
+                                                <a class="jb-btn jb-btn_fullwidth" href="index.php?act=viewcart">Xem giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Begin JB's Offcanvas Area -->
                     <a href="#" class="menu-btn color--white">
                         <i class="fa fa-bars"></i>
