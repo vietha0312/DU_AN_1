@@ -291,6 +291,12 @@ if (isset($_GET['act'])) {
             header('location: index.php?act=list_user');
             break;
 
+        case "delete_user":
+            if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                $id_user = $_GET['id_user'];
+                delete_user($id_user);
+            }
+            header('location:index.php?act=list_user');
             break;
     }
 } else {

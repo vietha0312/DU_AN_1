@@ -56,9 +56,35 @@
                                             ";
                                                 } ?></td>
                                             <td class="text-center">
-                                                <a href="./index.php?act=edit_user&id_user=<?= $user['id_user'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
-                                                <a href="./index.php?act=delete_usser&id_user=<?= $user['id_user'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                                <button type="button" class="btn btn-danger margin-5 text-white btn-lg " data-toggle="modal" data-target="#Modal2">
+                                                    <i class="mdi mdi-delete-circle"></i><span>Xóa</span>
+                                                </button>
+
+                                                <button type="button" class="btn btn-warning btn-lg"> <a href="./index.php?act=edit_user&id_user=<?= $user['id_user'] ?>" style="color:aliceblue"><i class="mdi mdi-auto-fix"></i><span>Sửa</span></a></button>
+
                                             </td>
+                                            <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Alert Model</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn đã chắc chắn là xóa chưa? Đừng hối hận
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="uploads/tải xuống.jpg" width="100% ">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal">Chưa chăc chắn</button>
+                                                            <button type="button" class="btn btn-danger btn-lg"> <a href="./index.php?act=delete_user&id_user=<?= $user['id_user'] ?>" style="color:aliceblue " onclick="showDeleteSuccess()"><span>Chắc chắn rồi</span></a></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
                                     <?php endforeach ?>
 
