@@ -9,7 +9,7 @@ include "model/nguoidung.php";
 include "model/giohang.php";
 include "model/hoadon.php";
 include "model/question.php";
-
+include "email/index.php";
 // kiểm tra session my cart đã tồn tại là 1 mảng chưa, nếu chưa thì khởi tạo 1 mảng mới
 if (!isset($_SESSION['mycart']))
     $_SESSION['mycart'] = [];
@@ -27,7 +27,7 @@ $list_topsp = loadall_pro_noibat();
 $list_bestsp =  loadall_pro_best();
 
 //Lấy lại mật khẩu
-
+$mail = new Mailer();
 include "view/header.php";
 
 // kiểm tra có act tương ứng với key người dùng click không, nếu có act thì thực hiện các case 
@@ -283,7 +283,131 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/giohang/bill.php";
             break;
+        case 'pay':
+            include "view/qr.php";
+            break;
+        case 'billconfirm':
+            if (isset($_POST['orderconfirm']) && ($_POST['orderconfirm'])) {
+                if (isset($_SESSION['user'])) {
+                    $randomNum = substr(str_shuffle("123456789"), 0, 5);
+                    $bill_code = $randomNum;
+                    $id_user = $_SESSION['user']['id_user'];
+                    $user_name = $_SESSION['user']['user_name'];
+                    $full_name = $_POST['full_name'];
+                    $address = $_POST['address'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $payment = $_POST['payment'];
+                    $order_date = date('Y/m/d h:i:s', time());
+                    $check_error = 0;
+                    $total_amount = total_amount();
 
+                    function validate_mobile($mobile)
+                    {
+                        return preg_match('/^[0-9]{10}+$/', $mobile);
+                    }
+                    function validate_email($email)
+                    {
+                        return preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*.(\.[a-z]{2,4})$/', $email);
+                    }
+                    if (validate_mobile($phone) == 0) {
+                        $_SESSION['errorMessage'] = "Email không hợp lệ !";
+                        $check_error = 1;
+                    }
+                    if (validate_mobile($phone) == 0) {
+                        $_SESSION['errorMessage'] = "Số điện thoại không đúng định dạng !";
+                        $check_error = 1;
+                    }
+                    if ($check_error == 0) {
+                        if ($total_amount > 0) {
+                            $_SESSION['idbill'] = $idbill = insert_bill($bill_code, $id_user, $user_name, $full_name, $address, $phone, $email, $payment, $order_date, $total_amount);
+                            $result = getUserEmail($email);
+                            $title = "Thông báo đặt hàng thành công!";
+                            $content = "<h3>Xin chào, cảm ơn quý khách đặt hàng tại UltraPhone.<br></h3>
+                                    <h4>Thông tin người nhận:</h4>
+                                    <p>Tên khách hàng: " . $full_name . "</p>
+                                    <p>Email: " . $email . "</p>
+                                    <p>Địa chỉ: " . $address . "</p>
+                                    <p>Số điện thoại: " . $phone . "</p>
+                                    <p>Ngày đặt hàng: " . $order_date . "</p>
+                                    <p>Tổng tiền: " . number_format($total_amount) . "₫</p>
+                                    ";
+                            $content .= "Chào mừng đến với  <a href='http://localhost/duan1-ultraphone/index.php'>UltraPhone! </a>";
+                            $mail->sendMail($title, $content, $email);
+                            $_SESSION['mail'] = $email;
+                            header('location: ?act=viewbill');
+                        } else {
+                            header('location: ?act=viewcart');
+                        }
+                    } else {
+                        header('location: ?act=bill');
+                    }
+                } else {
+                    echo '<script>alert("Bạn phải đăng nhập để đặt hàng!")</script>';
+                    header("location: index.php?act=login");
+                    // include "view/giohang/viewcart.php";
+                    break;
+                }
+                foreach ($_SESSION['mycart'] as $cart) {
+                    insert_cart($_SESSION['user']['id_user'], $_SESSION['user']['user_name'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                }
+                $_SESSION['mycart'] = [];
+            }
+            $bill = loadone_bill($_SESSION['idbill']);
+            $cart_detail = loadall_cart($_SESSION['idbill']);
+            error_reporting(0);
+
+            if ($payment == 2 || $payment == 3) {
+                $_SESSION['pay'] = [$payment, $total_amount, $bill_code];
+                header('location: view/qr.php');
+            } else {
+                $_SESSION['check'] = 1;
+            }
+            error_reporting(E_ALL);
+            unset($_SESSION['mycart']);
+            if ($_SESSION['check'] == 1 || $payment == 1) {
+                include "view/giohang/billconfirm.php";
+            }
+            break;
+        case 'viewbill':
+            if (isset($_SESSION['user'])) {
+                $randomNum = substr(str_shuffle("123456789"), 0, 5);
+                $bill_code = $randomNum;
+                $id_user = $_SESSION['user']['id_user'];
+                $user_name = $_SESSION['user']['user_name'];
+
+                $order_date = date('Y/m/d h:i:s', time());
+
+                $total_amount = total_amount();
+
+                if ($total_amount > 0) {
+                    $_SESSION['idbill'] = $idbill = insert_bill($bill_code, $id_user, $user_name, $full_name, $address, $phone, $email, $payment, $order_date, $total_amount);
+                    header('location: ?act=viewbill');
+                }
+            }
+            foreach ($_SESSION['mycart'] as $cart) {
+                insert_cart($_SESSION['user']['id_user'], $_SESSION['user']['user_name'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+            }
+            $_SESSION['mycart'] = [];
+
+            $bill = loadone_bill($_SESSION['idbill']);
+            $cart_detail = loadall_cart($_SESSION['idbill']);
+            error_reporting(0);
+
+            if ($payment == 2 || $payment == 3) {
+                $_SESSION['pay'] = [$payment, $total_amount, $bill_code];
+                header('location: view/qr.php');
+            } else {
+                $_SESSION['check'] = 1;
+            }
+            error_reporting(E_ALL);
+            if ($_SESSION['check'] == 1 || $payment == 1) {
+                include "view/giohang/billconfirm.php";
+            }
+            break;
+
+            include "view/giohang/viewbill.php";
+            break;
         default:
             include "view/content.php";
             break;
