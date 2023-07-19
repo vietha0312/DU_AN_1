@@ -11,7 +11,7 @@
  </div>
  <!--end phần active trang đang được hiển thị-->
  <article class="mt-3 container-sm">
-     <h5 class="alert alert-primary">Đặt hàng thành công</h5>
+
      <?php
         if (isset($bill) && is_array($bill)) {
             extract($bill);
@@ -101,3 +101,27 @@
      <!-- JB's Cart Area End Here -->
      </form>
  </article>
+ <style>
+     /* Tùy chỉnh màu nền của ô thông tin đơn hàng */
+     .card-body {
+         background-color: #f5f5f5;
+     }
+
+     /* Tùy chỉnh màu chữ và nền của tiêu đề bảng */
+     .card-header.cart {
+         color: #ffffff;
+         background-color: #007bff;
+     }
+
+     /* Tùy chỉnh màu nền và viền của bảng */
+     .table-bordered {
+         border-color: #dddddd;
+     }
+
+     /* Tùy chỉnh màu chữ và kích thước chữ của bảng */
+     .table-bordered td,
+     .table-bordered th {
+         color: #333333;
+         font-size: 14px;
+     }
+ </style>
