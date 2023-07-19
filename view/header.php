@@ -211,7 +211,7 @@ $total_amount = total_amount();
                             </h2>
                         </div>
 
-                        <!-- show danh sách danh mục -->
+                        <!-- Show danh sách danh mục -->
                         <div id="cate-toggle" class="category-menu-list">
                             <ul>
                                 <?php
@@ -219,8 +219,8 @@ $total_amount = total_amount();
                                     extract($cate);
                                     $linkpro = "index.php?act=product&idcate=" . $id_cate;
                                     echo '<li class="right-menu">
-                       <a href="' . $linkpro . '">' . $name_cate . '</a>
-                   </li>';
+                                    <a href="' . $linkpro . '">' . $name_cate . '</a>
+                                </li>';
                                 }
                                 ?>
                             </ul>
@@ -228,11 +228,26 @@ $total_amount = total_amount();
                     </div>
                 </div>
                 <!-- JB's Category Menu Area End Here -->
+
                 <!-- Begin Header Search Area -->
                 <div class="col-xl-7 col-lg-6 col-md-5">
                     <div class="header-search_area">
                         <form action="index.php?act=product" method="post" class="header-search_box">
+                            <!-- Thêm menu drop-down cho danh mục -->
+
+
                             <input class="jb-search_input" name="kyw" type="text" placeholder="Nhập từ khóa tìm kiếm ..." required />
+                            <div class="form-group">
+                                <select class="nice-select select-search-category" name="idcate">
+                                    <option value="">Tất cả danh mục</option>
+                                    <?php
+                                    foreach ($listcate as $cate) {
+                                        extract($cate);
+                                        echo '<option value="' . $id_cate . '">' . $name_cate . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                             <button class="jb-search_btn" name="btn_search" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -240,16 +255,18 @@ $total_amount = total_amount();
                     </div>
                 </div>
                 <!-- Header Search Area End Herer -->
+
                 <!-- Begin Header Contact Information Area -->
                 <div class="col-xl-2 col-lg-3 col-md-3">
                     <div class="contact-info">
-                        <a href="tel://+84335099885"><i class="fa fa-phone-volume"></i> +84 335099885 </a>
+                        <a href="tel://+84335099885"><i class="fa fa-phone-volume"></i> +84 334623400</a>
                     </div>
                 </div>
                 <!-- Header Contact Information Area End Here -->
             </div>
         </div>
     </div>
+
 </header>
 <style>
     /* Add this CSS to style the header area */

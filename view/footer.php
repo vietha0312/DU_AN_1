@@ -1,34 +1,3 @@
-<div class="footer-top_area @@border">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="jb-newsletter_area">
-          <div class="newsletter-content">
-            <h2 class="newsletter-heading">Join Our</h2>
-            <h3 class="newsletter-sub_heading">Newsletter Now!</h3>
-            <p class="short-desc">Subscribe to the Jobaria mailing list to receive updates on new
-              arrivals,
-              offers and other discount information.</p>
-            <div class="newsletter-form_wrap">
-              <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="newsletters-form validate" target="_blank" novalidate>
-                <div id="mc_embed_signup_scroll">
-                  <div id="mc-form" class="mc-form subscribe-form pt--15">
-                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email address" />
-                    <button class="newsletter-btn" id="mc-submit">
-                      <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-</div>
 <!-- JB's Footer Top Area End Here -->
 <!-- Begin JB's Footer Middle Area -->
 <div class="footer-middle_area bg--nero">
