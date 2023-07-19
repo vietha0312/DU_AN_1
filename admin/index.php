@@ -266,6 +266,32 @@ if (isset($_GET['act'])) {
 
 
             break;
+        case 'edit_user':
+
+
+            if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                $id_user = $_GET['id_user'];
+                $user = loadone_user($id_user);
+            }
+            render(
+                'update_user',
+                ['user' => $user]
+            );
+        case 'update_user':
+            if (isset($_POST['btn_update']) && ($_POST['btn_update'])) {
+                $id_user = $_POST['id_user'];
+                $user_name = $_POST['user_name'];
+                $full_name = $_POST['full_name'];
+                $email_user = $_POST['email_user'];
+                $password = $_POST['password'];
+                $role = $_POST['role'];
+                update_user($id_user, $user_name, $full_name, $email_user, $password, $role);
+                echo '<script>alert("Cập nhật tài khoản thành công!")</script>';
+            }
+            header('location: index.php?act=list_user');
+            break;
+
+            break;
     }
 } else {
 }
