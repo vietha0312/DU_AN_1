@@ -46,23 +46,3 @@ function tungthang($a)
     $liststatis = pdo_query_value($sql);
     return $liststatis;
 }
-// select SUM(`total_amount`) from bill where order_date >now() - interval 1 month
-
-// STR_TO_DATE("10-17-2021 15:40:10", "%d-%m-%Y %H:%i:%s");
-
-// SELECT STR_TO_DATE(order_date, "%Y-%m-%d %h:%i:%s") from bill
-
-// SELECT SUM(`total_amount`) FROM bill WHERE MONTH(STR_TO_DATE(order_date, "%d-%m-%Y %h:%i:%s");
-// ) = MONTH(NOW() - INTERVAL 1 MONTH) AND YEAR(STR_TO_DATE(order_date, "%d-%m-%Y %h:%i:%s");
-// )= YEAR(NOW());
-// $sql="SELECT SUM(`total_amount`) FROM bill WHERE STR_TO_DATE(order_date, "%d-%m-%Y %h:%i:%s");
-// BETWEEN NOW() - INTERVAL 30 DAY AND NOW()";
-//$sql="SELECT * FROM notes   where time >= CURRENT_TIMESTAMP -30";
-//$sql="select * FROM notesWHERE   time  BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY)AND NOW()";
-
- 
- //$sql="  SELECT  * FROM   notes WHERE  time BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()";
-
-//$sql=" select SUM(`total_amount`) from bill where  time >now() - interval 1 month";
-  // $sql="     SELECT * FROM   notes WHERE  user_id ='$user_id' and time > (NOW() - INTERVAL 1 MONTH)";
-      //$sql=  "SELECT * FROM notes WHERE time BETWEEN now()    , DATE_SUB(NOW()    , INTERVAL 1 MONTH) ";

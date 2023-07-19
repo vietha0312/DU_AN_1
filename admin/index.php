@@ -5,14 +5,14 @@ require_once "controller/controller.php";
 
 
 
-// include "view/list_category.php";
+
 
 include "model/pdo.php";
-include "model/bill.php";
+
 include "model/category.php";
 include "model/thongke.php";
-include "model/user.php";
-include "model/comment.php";
+
+
 include "model/product.php";
 
 
