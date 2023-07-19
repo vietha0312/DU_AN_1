@@ -49,20 +49,21 @@
              <div class="card mt-4 mb-4">
                  <div class="card-header cart text-primary fw-bold">Phương thức thanh toán</div>
                  <div class="card-body">
-                     <div class="form-check form-check-inline">
+                     <div class="payment-option">
                          <input class="form-check-input" type="radio" name="payment" id="inlineRadio1" value="1" checked>
-                         <label class="form-check-label" for="inlineRadio1">Thanh toán khi nhận hàng</label>
+                         <label for="inlineRadio1">Thanh toán khi nhận hàng</label>
                      </div>
-                     <div class="form-check form-check-inline">
+                     <div class="payment-option">
                          <input class="form-check-input" type="radio" name="payment" id="inlineRadio2" value="2">
-                         <label class="form-check-label" for="inlineRadio2">Chuyển khoản ngân hàng</label>
+                         <label for="inlineRadio2">Chuyển khoản ngân hàng</label>
                      </div>
-                     <div class="form-check form-check-inline">
+                     <div class="payment-option">
                          <input class="form-check-input" type="radio" name="payment" id="inlineRadio3" value="3">
-                         <label class="form-check-label" for="inlineRadio3">Thanh toán qua Momo</label>
+                         <label for="inlineRadio3">Thanh toán qua Momo</label>
                      </div>
                  </div>
              </div>
+
          <?php } else { ?>
              <div class="mt-3 mb-3">
                  <nav class="navbar">
@@ -90,3 +91,90 @@
      <!-- JB's Cart Area End Here -->
      </form>
  </article>
+ <style>
+     /* Style for the card containing the "Thông tin đặt hàng" section */
+     .card {
+         margin-bottom: 20px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+
+     /* Style for the card header */
+     .card-header {
+         background-color: #007bff;
+         color: #fff;
+         padding: 10px;
+         font-weight: bold;
+     }
+
+     /* Style for the card body */
+     .card-body {
+         padding: 20px;
+     }
+
+     /* Style for the input fields in "Thông tin đặt hàng" */
+     .wrap-infocart {
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+     }
+
+     .wrap-infocart span {
+         width: 180px;
+         font-weight: bold;
+     }
+
+     .ip-cart {
+         flex: 1;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+     }
+
+     /* Style for the success message */
+     .text-success {
+         color: #28a745;
+         font-weight: bold;
+         margin-top: 10px;
+     }
+
+     .payment-option {
+         margin-bottom: 10px;
+     }
+
+     .payment-option label {
+         cursor: pointer;
+         display: inline-block;
+         padding-left: 30px;
+         position: relative;
+     }
+
+     .payment-option input[type="radio"] {
+         position: absolute;
+         opacity: 0;
+         cursor: pointer;
+     }
+
+     /* Create custom radio button appearance */
+     .payment-option label:before {
+         content: '';
+         position: absolute;
+         left: 0;
+         top: 1px;
+         width: 20px;
+         height: 20px;
+         border: 2px solid #007bff;
+         border-radius: 50%;
+     }
+
+     /* Style the custom radio button when selected */
+     .payment-option input[type="radio"]:checked+label:before {
+         background-color: #007bff;
+     }
+
+     /* Optional: Add some hover effect */
+     .payment-option label:hover:before {
+         border-color: #0056b3;
+     }
+ </style>

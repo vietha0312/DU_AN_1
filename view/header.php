@@ -251,3 +251,68 @@ $total_amount = total_amount();
         </div>
     </div>
 </header>
+<style>
+    /* Add this CSS to style the header area */
+    header {
+        background-color: #0D1282;
+        color: #F0DE36;
+    }
+
+    /* Style for the navigation links in the header */
+    .hmenu li a,
+    .hm-dropdown li a,
+    .hm-menu li a,
+    .hmenu li a:hover,
+    .hm-dropdown li a:hover,
+    .hm-menu li a:hover {
+        color: #F0DE36;
+    }
+
+    /* Style for the search input box */
+    .jb-search_input {
+        background-color: #222;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    /* Style for the search button */
+    .jb-search_btn {
+        background-color: #007bff;
+        color: #F0DE36;
+    }
+
+    /* Style for the cart icon and item count in the header */
+    .minicart-icon i,
+    .item-count {
+        color: #F0DE36;
+    }
+
+    /* Style for the cart total amount in the header */
+    .item_total span {
+        color: #fff;
+    }
+
+    /* Style for the category menu in the header */
+    .category-menu .category-heading span,
+    .right-menu a {
+        color: #F0DE36;
+    }
+
+    /* Style for the dropdown menu items in the header */
+    .category-menu-list ul li a,
+    .dropdown-content a {
+        color: #F0DE36;
+        /* Change this to your desired color for dropdown menu items */
+    }
+
+    /* Style for the links in the header top right area */
+    .ht-menu a,
+    .ht-menu a:hover {
+        color: #fff;
+    }
+
+    /* Optional: Style for the header contact information */
+    .contact-info a {
+        color: #fff;
+    }
+</style>
