@@ -11,7 +11,7 @@ include "model/pdo.php";
 
 include "model/category.php";
 include "model/thongke.php";
-
+include "model/hoadon.php";
 
 include "model/product.php";
 include "model/user.php";
@@ -297,6 +297,17 @@ if (isset($_GET['act'])) {
                 delete_user($id_user);
             }
             header('location:index.php?act=list_user');
+            break;
+        case 'list_bill':
+
+
+            $listbill = loadall_bill(0);
+            render(
+                'list_bill',
+                ['listbill' => $listbill]
+            );
+
+
             break;
     }
 } else {
