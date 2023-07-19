@@ -65,19 +65,19 @@
                                                     <th>Trạng thái</th>
                                                     <th>Tổng tiền</th>
                                                 </tr>
-                                                <?php 
-                                               foreach($list_mybill as $bill) :
-                                                extract($bill);  
-                                                $stt = get_stt($status); 
-                                                $countpro = loadall_countcart($id_bill);
+                                                <?php
+                                                foreach ($list_mybill as $bill) :
+                                                    extract($bill);
+                                                    $stt = get_stt($status);
+                                                    $countpro = loadall_countcart($id_bill);
                                                 ?>
-                                                <tr>
-                                                    <td><a class="account-order-id" href="#">UTP-<?= $id_bill ?></a></td>
-                                                    <td><?= $order_date ?></td>
-                                                    <td><?= $countpro ?></td>
-                                                    <td><?= $stt ?></td>
-                                                    <td><?= number_format($total_amount)?>₫</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><a class="account-order-id" href="#">PHVPH-<?= $id_bill ?></a></td>
+                                                        <td><?= $order_date ?></td>
+                                                        <td><?= $countpro ?></td>
+                                                        <td><?= $stt ?></td>
+                                                        <td><?= number_format($total_amount) ?>₫</td>
+                                                    </tr>
                                                 <?php endforeach ?>
                                             </tbody>
                                         </table>
@@ -144,23 +144,7 @@
                                             <label for="account-details-email">Số điện thoại</label>
                                             <input type="number" name="phone_user" id="account-details-email" value="<?= $_SESSION['user']['phone_user'] ?>" placeholder="Nhập số điện thoại nhận hàng của bạn">
                                         </div>
-                                        <!-- <div class="single-input">
-                                            <label for="account-details-oldpass">Mật khẩu hiện tại (Để trống nếu không
-                                                thay đổi)</label>
-                                            <input type="password" id="account-details-oldpass"
-                                                placeholder="Nhập mật khẩu đang sử dụng">
-                                        </div>
-                                        <div class="single-input">
-                                            <label for="account-details-newpass">Mật khẩu mới (Để trống nếu không thay
-                                                đổi)</label>
-                                            <input type="password" id="account-details-newpass"
-                                                placeholder="Nhập mật khẩu mới">
-                                        </div>
-                                        <div class="single-input">
-                                            <label for="account-details-confpass">Xác nhận mật khẩu mới</label>
-                                            <input type="password" id="account-details-confpass"
-                                                placeholder="Nhập lại mật khẩu mới">
-                                        </div> -->
+
                                         <div class="col-12 wrap-btn-sub">
                                             <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id_user'] ?>">
                                             <input type="submit" class="btn-submit mt-3" name="btn_change" value="Lưu thay đổi">
@@ -183,7 +167,7 @@
                                             <label for="account-password-confpass">Xác nhận mật khẩu mới</label>
                                             <input type="password" id="account-password-confpass" placeholder="Nhập lại mật khẩu mới" name="repass">
                                         </div>
-                                        
+
                                         <div class="col-12 wrap-btn-sub">
                                             <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id_user'] ?>">
                                             <input type="submit" class="btn-submit mt-3" name="btn_pass" value="Lưu thay đổi">
@@ -199,3 +183,71 @@
     </form>
 </main>
 <!-- JB's Page Content Area End Here -->
+<style>
+    /* Định dạng giao diện cho form */
+    .jb-form-inner {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .jb-form-inner .form-group {
+        margin-bottom: 20px;
+    }
+
+    .jb-form-inner label {
+        font-weight: bold;
+    }
+
+    .jb-form-inner .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .jb-form-inner .btn-submit {
+        background-color: #0084c5;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    /* Định dạng ảnh đại diện */
+    .avt-user img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        border: 1px solid #0084c5;
+    }
+
+    /* Định dạng các thông tin đơn hàng và đặt hàng */
+    .card .card-header {
+        background-color: #0084c5;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .card .card-body table {
+        width: 100%;
+    }
+
+    .card .card-body td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .card .card-body td:last-child {
+        text-align: right;
+    }
+
+    .card .card-body td:first-child {
+        font-weight: bold;
+    }
+
+    .card .card-body tr:last-child td {
+        border-bottom: none;
+    }
+</style>
