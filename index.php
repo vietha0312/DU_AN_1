@@ -332,7 +332,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                                     <p>Ngày đặt hàng: " . $order_date . "</p>
                                     <p>Tổng tiền: " . number_format($total_amount) . "₫</p>
                                     ";
-                            $content .= "Chào mừng đến với  <a href='http://localhost/duan1-ultraphone/index.php'>UltraPhone! </a>";
+                            $content .= "Chào mừng đến với  <a href='http://localhost/DU_AN_1/index.php'>UltraPhone! </a>";
                             $mail->sendMail($title, $content, $email);
                             $_SESSION['mail'] = $email;
                             header('location: ?act=viewbill');
@@ -345,7 +345,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 } else {
                     echo '<script>alert("Bạn phải đăng nhập để đặt hàng!")</script>';
                     header("location: index.php?act=login");
-                    // include "view/giohang/viewcart.php";
+
                     break;
                 }
                 foreach ($_SESSION['mycart'] as $cart) {
@@ -357,12 +357,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $cart_detail = loadall_cart($_SESSION['idbill']);
             error_reporting(0);
 
-            if ($payment == 2 || $payment == 3) {
-                $_SESSION['pay'] = [$payment, $total_amount, $bill_code];
-                header('location: view/qr.php');
-            } else {
-                $_SESSION['check'] = 1;
-            }
+
+            $_SESSION['check'] = 1;
+
             error_reporting(E_ALL);
             unset($_SESSION['mycart']);
             if ($_SESSION['check'] == 1 || $payment == 1) {
