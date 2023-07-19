@@ -14,7 +14,7 @@ include "model/thongke.php";
 
 
 include "model/product.php";
-
+include "model/user.php";
 
 
 if (isset($_GET['act'])) {
@@ -254,6 +254,14 @@ if (isset($_GET['act'])) {
             render(
                 'chart',
                 ['chart' => $liststatis]
+            );
+        case 'list_user':
+
+
+            $listuser = loadall_user();
+            render(
+                'list_user',
+                ['listuser' => $listuser]
             );
 
 

@@ -43,21 +43,24 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr>
-                                        <td>Rhona Davidson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Tokyo</td>
-                                        <td>55</td>
-                                        <td><span class="badge badge-pill badge-danger">Admin</span>
-                                            <span class="badge badge-pill  badge-info">User</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning btn-lg"> <a href="pages-buttons.html" style="color:aliceblue"><i class="mdi mdi-delete-circle"></i><span>Xóa</span></a></button>
-
-                                            <button type="button" class="btn btn-info btn-lg"> <a href="pages-buttons.html" style="color:aliceblue"><i class="mdi mdi-file-document-box"></i><span>Sửa</span></a></button>
-                                        </td>
-                                    </tr>
-
+                                    <?php foreach ($listuser as $user) : ?>
+                                        <tr>
+                                            <td><?= $user['id_user'] ?></td>
+                                            <td><?= $user['user_name'] ?></td>
+                                            <td><?= $user['full_name'] ?></td>
+                                            <td><?= $user['email_user'] ?></td>
+                                            <td><?php if ($user['role'] == 1) {
+                                                    echo "<span class='badge badge-danger'>Admin</span>";
+                                                } else {
+                                                    echo "<span class='badge badge-success'>Thành Viên</span>
+                                            ";
+                                                } ?></td>
+                                            <td class="text-center">
+                                                <a href="./index.php?act=edit_user&id_user=<?= $user['id_user'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                                <a href="./index.php?act=delete_usser&id_user=<?= $user['id_user'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="fa-solid fa-trash"></i> Xóa</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
 
                                 </tbody>
                                 <tfoot>
