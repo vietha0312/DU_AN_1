@@ -175,6 +175,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             // CONTROLLER THÔNG TIN TÀI KHOẢN: 
             // thông tin tài khoản
+
         case 'myaccount':
             if (isset($_SESSION['user'])) {
                 if (isset($_POST['btn_change']) && ($_POST['btn_change'])) {
@@ -214,18 +215,67 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/nguoidung/myaccount.php";
             break;
 
-
-
-            if (isset($_POST['btn_contact']) && ($_POST['btn_contact'])) {
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $contennt = $_POST['contennt'];
-                question($name, $email, $phone, $contennt);
-                echo '<script>alert("Gửi câu hỏi thành công !")</script>';
-            }
-            include "view/lienhe.php";
+        case 'viewcart':
+            include "view/giohang/viewcart.php";
             break;
+
+        case "edit":
+
+            foreach ($_SESSION['mycart'] as $k => $v) {
+                if ($_POST["code"] == $k) {
+                    if ($_POST["quantity"] == '0') {
+                        array_splice($_SESSION['mycart'], $k, 1);
+                    } else {
+                        $_SESSION['mycart'][$k][4] = $_POST["quantity"];
+                        $_SESSION['mycart'][$k][5] = $_SESSION['mycart'][$k][3] * $_SESSION['mycart'][$k][4];
+                    }
+                }
+            }
+            break;
+        case 'addtocart':
+            if (isset($_POST['addtocart']) && $_POST['addtocart']) {
+                $id_pro = $_POST['id_pro'];
+                $name_pro = $_POST['name_pro'];
+                $img_pro = $_POST['img_pro'];
+                $price = $_POST['price'];
+                $check = 0;
+                if (isset($_POST['quatity']) && $_POST['quatity'] >= 1) {
+                    $quantity = $_POST['quatity'];
+                } else {
+                    $quantity = 1;
+                }
+                foreach ($_SESSION['mycart'] as $k => $w) {
+                    if ($id_pro == $_SESSION['mycart'][$k][0]) {
+                        $sl = $_SESSION['mycart'][$k][4];
+                        $_SESSION['mycart'][$k][4] = $sl + $quantity;
+                        $_SESSION['mycart'][$k][5] = $_SESSION['mycart'][$k][3] * $_SESSION['mycart'][$k][4];
+                        header("location: index.php?act=viewcart");
+                        $check = 1;
+                    }
+                }
+                if ($check == 0) {
+                    $total = $price * $quantity;
+                    $add_pro = [$id_pro, $name_pro, $img_pro, $price, $quantity, $total];
+                    array_push($_SESSION['mycart'], $add_pro);
+                    header("location: index.php?act=viewcart");
+                }
+            }
+            include "view/giohang/viewcart.php";
+            break;
+
+            // xóa sản phẩm trong giỏ hàng
+        case 'removecart':
+            if (isset($_GET['idcart'])) {
+                $idcart = $_GET['idcart'];
+                array_splice($_SESSION['mycart'], $idcart, 1);
+            } else {
+                $_SESSION['mycart'] = [];
+            }
+            header('location: index.php?act=viewcart');
+            break;
+
+
+
         default:
             include "view/content.php";
             break;
