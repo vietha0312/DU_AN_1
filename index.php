@@ -10,27 +10,15 @@ include "model/giohang.php";
 include "model/hoadon.php";
 include "model/question.php";
 include "email/index.php";
-// kiểm tra session my cart đã tồn tại là 1 mảng chưa, nếu chưa thì khởi tạo 1 mảng mới
+
 if (!isset($_SESSION['mycart']))
     $_SESSION['mycart'] = [];
-
-//load sản phẩm trang client
 $prohome = loadall_pro_home();
-
-//load danh mục trang client
 $listcate = loadall_cate();
-
-//load 8 sản phẩm nổi bật
 $list_topsp = loadall_pro_noibat();
-
-//load sản phẩm bán chạy
 $list_bestsp =  loadall_pro_best();
-
-//Lấy lại mật khẩu
 $mail = new Mailer();
 include "view/header.php";
-
-// kiểm tra có act tương ứng với key người dùng click không, nếu có act thì thực hiện các case 
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
