@@ -336,6 +336,19 @@ if (isset($_GET['act'])) {
                 header('location:index.php?act=list_bill');
             }
             break;
+        case 'billdetail':
+
+            if (isset($_GET['idbill']) && ($_GET['idbill']) > 0) {
+                $idbill = $_GET['idbill'];
+                $one_bill = loadone_bill($idbill);
+            }
+            render(
+                'bill_detail',
+                ['one_bill' => $one_bill]
+            );
+
+
+            break;
     }
 } else {
 }

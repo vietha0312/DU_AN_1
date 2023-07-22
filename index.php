@@ -279,7 +279,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (isset($_SESSION['user'])) {
                     $randomNum = substr(str_shuffle("123456789"), 0, 5);
                     $bill_code = $randomNum;
-                    $id_user = $_SESSION['user']['id_user'];
+
+                    $img_pro = $_FILES['img_pro']['name'];
                     $user_name = $_SESSION['user']['user_name'];
                     $full_name = $_POST['full_name'];
                     $address = $_POST['address'];
@@ -308,19 +309,49 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     }
                     if ($check_error == 0) {
                         if ($total_amount > 0) {
-                            $_SESSION['idbill'] = $idbill = insert_bill($bill_code, $id_user, $user_name, $full_name, $address, $phone, $email, $payment, $order_date, $total_amount);
+                            $_SESSION['idbill'] = $idbill = insert_bill($bill_code, $id_user, $user_name, $full_name, $address, $phone, $email, $payment, $order_date, $total_amount, $img_pro);
                             $result = getUserEmail($email);
                             $title = "Thông báo đặt hàng thành công!";
-                            $content = "<h3>Xin chào, cảm ơn quý khách đặt hàng tại UltraPhone.<br></h3>
-                                    <h4>Thông tin người nhận:</h4>
-                                    <p>Tên khách hàng: " . $full_name . "</p>
-                                    <p>Email: " . $email . "</p>
-                                    <p>Địa chỉ: " . $address . "</p>
-                                    <p>Số điện thoại: " . $phone . "</p>
-                                    <p>Ngày đặt hàng: " . $order_date . "</p>
-                                    <p>Tổng tiền: " . number_format($total_amount) . "₫</p>
-                                    ";
-                            $content .= "Chào mừng đến với  <a href='http://localhost/DU_AN_1/index.php'>UltraPhone! </a>";
+                            $content = '<div style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6;">
+                            <h3>Xin chào, cảm ơn quý khách đặt hàng tại PhoneShop.</h3>
+                            <table border="1" cellpadding="5" style="border-collapse: collapse;">
+                                <tr>
+                                    <th>Thông tin người nhận:</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>Tên khách hàng:</td>
+                                    <td>' . $full_name . '</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>' . $email . '</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ:</td>
+                                    <td>' . $address . '</td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại:</td>
+                                    <td>' . $phone . '</td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày đặt hàng:</td>
+                                    <td>' . $order_date . '</td>
+                                </tr>
+                                <tr>
+                                <td>Điện thoại</td>
+                                <td>' . $img_pro . '</td>
+                            </tr>
+                                <tr>
+                                    <td>Tổng tiền:</td>
+                                    <td>' . number_format($total_amount) . '₫</td>
+                                </tr>
+                            </table>
+                        ';
+                            $content .= '<p>Chào mừng đến với <a href="http://localhost/DU_AN_1/index.php">PhoneShop</a></p>
+                        </div>';
+
                             $mail->sendMail($title, $content, $email);
                             $_SESSION['mail'] = $email;
                             header('location: ?act=viewbill');
@@ -381,7 +412,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             if ($payment == 2 || $payment == 3) {
                 $_SESSION['pay'] = [$payment, $total_amount, $bill_code];
-                header('location: view/qr.php');
+                header('location: view/payonl.php');
             } else {
                 $_SESSION['check'] = 1;
             }
@@ -402,4 +433,5 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 }
 
 include "view/footer.php";
+
 ob_end_flush();

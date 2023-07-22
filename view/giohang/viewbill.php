@@ -24,7 +24,7 @@
              <table class="table table-bordered">
                  <tr>
                      <td>Mã đơn hàng:</td>
-                     <td><span class="fw-bold">UTP-<?= $id_bill ?></span></td>
+                     <td><span class="fw-bold">PHVH-<?= $id_bill ?></span></td>
                  </tr>
                  <tr>
                      <td>Thời gian đặt hàng:</td>
