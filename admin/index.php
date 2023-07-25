@@ -1,18 +1,10 @@
 <?php
 session_start();
 require_once "controller/controller.php";
-
-
-
-
-
-
 include "model/pdo.php";
-
 include "model/category.php";
 include "model/thongke.php";
 include "model/hoadon.php";
-
 include "model/product.php";
 include "model/user.php";
 
@@ -21,7 +13,14 @@ if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         case '/':
-
+            case 'dashboard':
+         
+                    render('dashboard');
+                
+                
+              
+              
+                break;
         case "list_product":
 
 
@@ -328,6 +327,15 @@ if (isset($_GET['act'])) {
                 $id_bill = $_POST['id_bill'];
                 $status = $_POST['status'];
                 $status_pay = $_POST['status_pay'];
+
+                $one_bill = loadone_bill($id_bill);
+
+                if ($one_bill['status'] == 3 || $one_bill['status'] == 4) {
+                    echo '<script>alert("Không thể cập nhật trạng thái cho đơn hàng đã giao hoặc đã hủy.")</script>';
+                    header('location:index.php?act=list_bill');
+                    exit;
+                }
+
                 if ($status == 3) {
                     $status_pay = 1;
                 }
@@ -336,6 +344,14 @@ if (isset($_GET['act'])) {
                 header('location:index.php?act=list_bill');
             }
             break;
+
+
+
+
+
+
+
+
         case 'billdetail':
 
             if (isset($_GET['idbill']) && ($_GET['idbill']) > 0) {
@@ -351,4 +367,5 @@ if (isset($_GET['act'])) {
             break;
     }
 } else {
+    render('dashboard');
 }
