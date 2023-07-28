@@ -125,7 +125,11 @@
         </div>
     </div>
 </div>
-
+<script src="view/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+ 
+ 
+    <script src="view/assets/extra-libs/DataTables/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
         // Filter orders based on payment status

@@ -132,6 +132,12 @@
 
     </div>
 </div>
+<script src="view/assets/libs/jquery/dist/jquery.min.js"></script>
+
+    <!-- this page js -->
+    <script src="view/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="view/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="view/assets/extra-libs/DataTables/datatables.min.js"></script>
 <script>
     /****************************************
      *       Basic Table                   *

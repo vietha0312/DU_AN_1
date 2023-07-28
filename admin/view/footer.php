@@ -1,4 +1,5 @@
 <script src="view/assets/libs/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap tether Core JavaScript -->
 <script src="view/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 <script src="view/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
