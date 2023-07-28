@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="./src/css/footer.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="./src/css/dropdown.css" />
   <link rel="shortcut icon" type="./src/imagex-icon" href="./src/image/menu/logo/logo-url.png" />
+  <link rel="stylesheet" href="path/to/bootstrap.min.css">
   <style type="text/css">
     .error {
       margin-top: 6px;
