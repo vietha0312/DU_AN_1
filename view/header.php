@@ -7,13 +7,13 @@ $total_amount = total_amount();
 
 <header>
     <!-- Begin Header Top Area -->
-    <div class="header-top_area bg--white_smoke">
+    <div class="header-top_area" style="background-color: #444444;">
         <div class="container">
             <div class="row">
                 <!-- Begin Header Information Area -->
                 <div class="col-lg-3 col-md-6 col-sm-4">
                     <div class="header-info_area">
-                        <span>Chào mừng đến với UltraPhone!</span>
+                        <span class="text-light">Chào mừng đến với UltraPhone!</span>
                     </div>
                 </div>
                 <!-- Header Information Area End Here -->
@@ -76,7 +76,7 @@ $total_amount = total_amount();
                 <div class="col-lg-4 col-md-4 col-sm-6 col-6 order-1 order-lg-1 order-sm-1">
                     <div class="hm-logo">
                         <a href="index.php">
-                            <img src="./src/image/menu/logo/logo.png" alt="Logo Ultraphone" />
+                            <img src="./src/image/shop/logo_shop.png" alt="shopphone" width="65%" />
                         </a>
                     </div>
                 </div>
@@ -271,7 +271,7 @@ $total_amount = total_amount();
 <style>
     /* Add this CSS to style the header area */
     header {
-        background-color: #0D1282;
+        background-color: #0099FF;
         color: #F0DE36;
     }
 
