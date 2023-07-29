@@ -322,29 +322,32 @@ if (isset($_GET['act'])) {
 
 
             break;
-        case 'update_bill':
-            if (isset($_POST['btn_update']) && ($_POST['btn_update'])) {
-                $id_bill = $_POST['id_bill'];
-                $status = $_POST['status'];
-                $status_pay = $_POST['status_pay'];
-
-                $one_bill = loadone_bill($id_bill);
-
-                if ($one_bill['status'] == 3 || $one_bill['status'] == 4) {
-                    echo '<script>alert("Không thể cập nhật trạng thái cho đơn hàng đã giao hoặc đã hủy.")</script>';
+            case 'update_bill':
+                if (isset($_POST['btn_update']) && ($_POST['btn_update'])) {
+                    $id_bill = $_POST['id_bill'];
+                    $status = $_POST['status'];
+                    $status_pay = $_POST['status_pay'];
+            
+                    $one_bill = loadone_bill($id_bill);
+            
+                    if ($one_bill['status'] == 3 || $one_bill['status'] == 4) {
+                        echo '<script>alert("Không thể cập nhật trạng thái cho đơn hàng đã giao hoặc đã hủy.")</script>';
+                        header('location:index.php?act=list_bill');
+                        exit;
+                    }
+            
+                    // If the order is canceled and already paid, do not update the revenue
+                    if ($status == 4 && $status_pay == 1) {
+                        update_bill($id_bill, $status, $status_pay, false);
+                    } else {
+                        update_bill($id_bill, $status, $status_pay);
+                    }
+            
+                    echo '<script>alert("Cập nhật đơn hàng thành công!")</script>';
                     header('location:index.php?act=list_bill');
-                    exit;
                 }
-
-                if ($status == 3) {
-                    $status_pay = 1;
-                }
-                update_bill($id_bill, $status, $status_pay);
-                echo '<script>alert("Cập nhật đơn hàng thành công!")</script>';
-                header('location:index.php?act=list_bill');
-            }
-            break;
-
+                break;
+            
 
 
 

@@ -25,10 +25,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Danh sách sản phẩm</h5>
                         <div class="mb-3">
-                            <button class="btn btn-primary filter-payment" data-filter="all">Tất cả</button>
-                            <button class="btn btn-success filter-payment" data-filter="paid">Đã thanh toán</button>
-                            <button class="btn btn-danger filter-payment" data-filter="unpaid">Chưa thanh toán</button>
-                        </div>
+    <button class="btn btn-primary filter-payment" data-filter="all">Trạng thái thanh toán</button>
+    <button class="btn btn-success filter-payment" data-filter="paid">Đã thanh toán</button>
+    <button class="btn btn-danger filter-payment" data-filter="unpaid">Chưa thanh toán</button>
+</div>
+<div class="mb-3">
+    <button class="btn btn-primary filter-status" data-filter="all">Trạng thái giao hàng</button>
+    <button class="btn btn-warning filter-status" data-filter="processing">Đang xử lý</button>
+    <button class="btn btn-primary filter-status" data-filter="shipping">Đang giao hàng</button>
+    <button class="btn btn-success filter-status" data-filter="delivered">Đã giao hàng</button>
+    <button class="btn btn-danger filter-status" data-filter="canceled">Đã hủy</button>
+</div>
                         <div class="table-responsive">
                             <table id="zero_config" class="table table-striped table-bordered">
                                 <thead>
@@ -53,8 +60,23 @@
 
                                         $is_paid = $bill['status_pay'] == 1;
                                         $filter_class = $is_paid ? 'paid' : 'unpaid';
+                                        $order_status = '';
+    if ($bill['status'] == 0) {
+        $order_status = 'new ';
+    } else if ($bill['status'] == 1) {
+        $order_status = 'processing';
+    } else if ($bill['status'] == 2) {
+        $order_status = 'shipping';
+    } else if ($bill['status'] == 3) {
+        $order_status = 'delivered';
+    } else if ($bill['status'] == 4) {
+        $order_status = 'canceled';
+    }
+
+
+                                        
                                     ?>
-                                        <tr class="filterable <?= $filter_class ?>">
+                                        <tr class="filterable <?= $filter_class ?> <?= $order_status ?>">
                                             <td><?= $i ?></td>
                                             <td><?= $bill['full_name'] ?></td>
                                             <td><?= number_format($bill['total_amount']) ?></td>
@@ -130,10 +152,21 @@
  
  
     <script src="view/assets/extra-libs/DataTables/datatables.min.js"></script>
-<script>
+    <script>
     $(document).ready(function() {
         // Filter orders based on payment status
         $('.filter-payment').click(function() {
+            const filter = $(this).data('filter');
+            if (filter === 'all') {
+                $('.filterable').show();
+            } else {
+                $('.filterable').hide();
+                $(`.${filter}`).show();
+            }
+        });
+
+     
+        $('.filter-status').click(function() {
             const filter = $(this).data('filter');
             if (filter === 'all') {
                 $('.filterable').show();
