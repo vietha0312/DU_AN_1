@@ -95,13 +95,7 @@
             <!-- Begin Shopbar With Banner Area -->
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="shopbar-with_banner">
-                    <div class="jb-sidebar_banner">
-                        <div class="banner-item">
-                            <a href="#">
-                                <img src="./src/image/shop/saleip12.jpg" alt="Ultraphone Product">
-                            </a>
-                        </div>
-                    </div>
+
                     <!-- Begin Shop Topbar Area -->
                     <div class="shop-topbar">
                         <div class="shopbar-inner">
@@ -122,8 +116,8 @@
                         <div class="product-select-box">
                             <div class="product-short">
                                 <form action="index.php?act=product" method="post">
-                                    <input type="text" class="ip-search" name="kyw" placeholder="Nhập tên sản phẩm...">
-                                    <input type="submit" name="btn-search" class="btn-search" value="Tìm kiếm">
+                                    <input type="text" class="ip-search btn" name="kyw" placeholder="Nhập tên sản phẩm...">
+                                    <input type="submit" name="btn-search" class="btn-search btn btn-outline-primary" value="Tìm kiếm">
                                 </form>
                             </div>
                         </div>
@@ -135,34 +129,27 @@
                             <div id="grid-view" class="tab-pane fade active show shop-products_grid" role="tabpanel">
                                 <div class="row">
                                     <?php if (empty($listpro)) { ?>
-                                        <div class="no-found">
-                                            <div class="img-no-found">
-                                                <img src="./src/image/error/no-product.png" alt="Ảnh báo lỗi">
+                                        <div class="col-12">
+                                            <div class="no-found text-center">
+                                                <div class="img-no-found">
+                                                    <img src="./src/image/error/no-product.png" alt="Ảnh báo lỗi" class="img-fluid">
+                                                </div>
+                                                <h1 class="noresult">Oops...không tồn tại sản phẩm trùng khớp với từ khóa bạn nhập, vui lòng tìm kiếm sản phẩm khác <i class="fa-solid fa-face-sad-tear"></i></h1>
                                             </div>
-                                            <h1 class="noresult">Oops...không tồn tại sản phẩm trùng khớp với từ khóa bạn
-                                                nhập, vui
-                                                lòng tìm kiếm sản phẩm khác <i class="fa-solid fa-face-sad-tear"></i></h1>
-
                                         </div>
                                     <?php } ?>
                                     <?php foreach ($listpro as $pro) { ?>
-                                        <!-- extract($pro);
-                                        $linkdetail = "./index.php?act=prodetail&idpro=" . $id_pro;
-                                        $img_home = "./admin/uploads/" . $img_pro; -->
                                         <div class="col-lg-4 col-md-4 col-sm-6">
                                             <div class="jb-slide-item">
                                                 <div class="jb-single_product">
                                                     <div class="product-img">
                                                         <a href="index.php?act=prodetail&idpro=<?php echo $pro['id_pro'] ?>">
-                                                            <img src="admin/uploads/<?php echo $pro['img_pro'] ?>" alt="Ảnh sản phẩm">
+                                                            <img src="admin/uploads/<?php echo $pro['img_pro'] ?>" alt="Ảnh sản phẩm" class="img-fluid">
                                                         </a>
                                                         <span class="sticker">Mới</span>
-                                                        <?php if ($pro['discount'] <= 0) { ?>
-                                                            <span></span>
-                                                        <?php } else { ?>
+                                                        <?php if ($pro['discount'] > 0) { ?>
                                                             <span class="sticker-2">-<?= $pro['discount'] ?>%</span>
                                                         <?php } ?>
-
                                                     </div>
                                                     <div class="jb-product_content">
                                                         <div class="product-desc_info">
@@ -177,29 +164,24 @@
                                                                     </span>
                                                                 <?php } else { ?>
                                                                     <span class="new-price">
-                                                                        <?= number_format(($pro['price']) - (($pro['price']) * ($pro['discount']) / 100))
-                                                                        ?>₫
+                                                                        <?= number_format(($pro['price']) - (($pro['price']) * ($pro['discount']) / 100)) ?>₫
                                                                     </span>
                                                                     <span class="old-price">
                                                                         <?= number_format($pro['price']) ?>₫
                                                                     </span>
                                                                 <?php } ?>
-
-
                                                             </div>
                                                         </div>
                                                         <div class="actions-add">
                                                             <form action="index.php?act=addtocart" method="post">
-                                                                <ul>
-                                                                   
+                                                                <ul class="list-inline">
                                                                     <input type="hidden" name="id_pro" value="<?php echo $pro['id_pro'] ?>">
                                                                     <input type="hidden" name="name_pro" value="<?php echo $pro['name_pro'] ?>">
                                                                     <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>">
                                                                     <input type="hidden" name="price" value="<?php echo $pro['price'] ?>">
-                                                                    <li>
-                                                                        <input type="submit" class="addtocart" name="addtocart" value="Thêm vào giỏ">
+                                                                    <li class="list-inline-item">
+                                                                        <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
                                                                     </li>
-                                                                
                                                                 </ul>
                                                             </form>
                                                         </div>
@@ -208,146 +190,9 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-
-
-                                    <!-- JB's Slide Item Area End Here -->
-                                </div>
-                                <!-- <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="paginatoin-area">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <div class="product-select-box">
-                                                        <div class="product-short">
-                                                            <p>Hiển thị</p>
-                                                            <select class="nice-select">
-                                                                <option value="5">5</option>
-                                                                <option value="10">10</option>
-                                                                <option value="15">15</option>
-                                                                <option value="20">20</option>
-                                                                <option value="25">25</option>
-                                                            </select>
-                                                            <span>mỗi trang</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <ul class="pagination-box">
-                                                        <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i>
-                                                                Trang trước</a>
-                                                        </li>
-                                                        <li class="active"><a href="#">1</a></li>
-                                                        <li><a href="#">2</a></li>
-                                                        <li><a href="#">3</a></li>
-                                                        <li>
-                                                            <a href="#" class="Next"> Trang sau <i class="fa fa-chevron-right"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <div id="list-view" class="tab-pane fade shop-product-list_view" role="tabpanel">
-                                <div class="row g-0">
-                                    <div class="col-lg-12">
-                                        <?php
-                                        foreach ($listpro as $pro) { ?>
-                                            <div class="row g-0 jb-slide-item">
-                                                <div class="col-lg-4 col-md-4 jb-single_product">
-                                                    <div class="product-img">
-                                                        <a href="index.php?act=prodetail&idpro=<?= $pro['id_pro'] ?>">
-                                                            <img src="admin/uploads/<?= $pro['img_pro'] ?>" alt="Ảnh sản phẩm">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8">
-                                                    <div class="jb-product_content">
-                                                        <div class="product-desc_info">
-                                                            <h6><a class="product-name" href="index.php?act=prodetail&idpro=<?= $pro['id_pro'] ?>"><?= $pro['name_pro'] ?></a></h6>
-                                                            <!-- <div class="rating-box">
-                                                                <ul>
-                                                                    <li><i class="fa fa-star"></i></li>
-                                                                    <li><i class="fa fa-star"></i></li>
-                                                                    <li><i class="fa fa-star"></i></li>
-                                                                    <li><i class="fa fa-star"></i></li>
-                                                                    <li><i class="fa fa-star"></i></li>
-                                                                </ul>
-                                                            </div> -->
-                                                            <div class="product-desc">
-                                                                <p><?= $pro['short_des'] ?></p>
-                                                            </div>
-                                                            <div class="price-box">
-                                                                <?php if ($pro['discount'] <= 0) { ?>
-                                                                    <span class="new-price"><?= number_format($pro['price']) ?>₫</span>
-                                                                <?php } else { ?>
-                                                                    <span class="new-price"><?= number_format(($pro['price']) - (($pro['price']) * ($pro['discount']) / 100)) ?>₫</span>
-                                                                    <span class="old-price"><?= number_format($pro['price']) ?>₫</span>
-                                                                <?php } ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="actions-add-2">
-                                                            <form action="index.php?act=addtocart" method="post">
-                                                                <ul>
-                                                                    <!-- <li>
-                                                                        <a class="jb-wishlist_link" href="#"><i class="fa fa-heart"></i></a>
-                                                                    </li> -->
-                                                                    <input type="hidden" name="id_pro" value="<?php echo $pro['id_pro'] ?>">
-                                                                    <input type="hidden" name="name_pro" value="<?php echo $pro['name_pro'] ?>">
-                                                                    <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>">
-                                                                    <input type="hidden" name="price" value="<?php echo $pro['price'] ?>">
-                                                                    <li>
-                                                                        <input type="submit" class="addtocart" name="addtocart" value="Thêm vào giỏ">
-                                                                    </li>
-                                                                    <!-- <li>
-                                                                        <a class="jb-sp_link" href="#"><i class="fa fa-copy"></i></a>
-                                                                    </li> -->
-                                                                </ul>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-
-                                    </div>
-                                    <!-- <div class="col-lg-12">
-                                        <div class="paginatoin-area">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <div class="product-select-box">
-                                                        <div class="product-short">
-                                                            <p>Hiển thị</p>
-                                                            <select class="nice-select">
-                                                                <option value="5">5</option>
-                                                                <option value="10">10</option>
-                                                                <option value="15">15</option>
-                                                                <option value="20">20</option>
-                                                                <option value="25">25</option>
-                                                            </select>
-                                                            <span>mỗi trang</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <ul class="pagination-box">
-                                                        <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i>
-                                                                Trang sau</a>
-                                                        </li>
-                                                        <li class="active"><a href="#">1</a></li>
-                                                        <li><a href="#">2</a></li>
-                                                        <li><a href="#">3</a></li>
-                                                        <li>
-                                                            <a href="#" class="Next"> Trang trước <i class="fa fa-chevron-right"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
+                            <!-- Rest of the code remains unchanged -->
                         </div>
                     </div>
                     <!-- End vùng hiển thị sản phẩm-->

@@ -13,7 +13,7 @@ $total_amount = total_amount();
                 <!-- Begin Header Information Area -->
                 <div class="col-lg-3 col-md-6 col-sm-4">
                     <div class="header-info_area">
-                        <span class="text-light">Chào mừng đến với UltraPhone!</span>
+                        <span class="text-light">Chào mừng đến với PhoneShop!</span>
                     </div>
                 </div>
                 <!-- Header Information Area End Here -->
@@ -288,15 +288,12 @@ $total_amount = total_amount();
     /* Style for the search input box */
     .jb-search_input {
         background-color: #222;
-        color: #fff;
+        color: #000;
         border: 1px solid #fff;
     }
 
     /* Style for the search button */
-    .jb-search_btn {
-        background-color: #007bff;
-        color: #F0DE36;
-    }
+    .jb-search_btn {}
 
     /* Style for the cart icon and item count in the header */
     .minicart-icon i,
