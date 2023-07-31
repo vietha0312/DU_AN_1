@@ -15,7 +15,7 @@
             <!-- form đăng nhập-->
             <form action="index.php?act=contact" method="post">
                 <div class="login-form">
-                    <h2 style="text-align: center;">Liên hệ UltraPhone</h2>
+                    <h2 style="text-align: center;">Liên hệ PhoneShop</h2>
                     <div class="row">
                         <div class="col-md-12 col-12">
                             <labe style="font-weight: 700;">Họ và tên</labe>
@@ -35,7 +35,8 @@
                                     line-height: 23px;padding: 10px 20px;font-size: 14px;color: #888888;margin-bottom: 15px;border-radius: 8px;" placeholder="Nhập câu hỏi của bạn..." name="contennt" required></textarea>
                         </div>
                         <div class="col-12 wrap-btn-sub" style="margin-left:38%;">
-                            <button type="submit" class="btn-submit" name="btn_contact">Gửi</button>
+
+                            <button type="submit" class="btn btn-success" name="btn_contact">Gửi</button>
                         </div>
                     </div>
                 </div>
@@ -59,7 +60,7 @@
 
                         <h5 style="padding:10px;">
                             <i class="fa fa-phone" style="color: rgb(2 132 199);"></i>
-                            <span style="color: rgb(14 165 233);">+0999123123</span>
+                            <span style="color: rgb(14 165 233);">+0375616574</span>
                         </h5>
 
                         <h5 style="padding:10px;">

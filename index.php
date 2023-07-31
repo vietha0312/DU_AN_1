@@ -386,6 +386,17 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/giohang/billconfirm.php";
             }
             break;
+        case 'question':
+            if (isset($_POST['btn_question']) && ($_POST['btn_question'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $contennt = $_POST['contennt'];
+                question($name, $email, $phone, $contennt);
+                echo '<script>alert("Gửi câu hỏi thành công !")</script>';
+            }
+            include "view/hoidap/question.php";
+            break;
         case 'viewbill':
             if (isset($_SESSION['user'])) {
                 $randomNum = substr(str_shuffle("123456789"), 0, 5);
@@ -424,6 +435,17 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
             include "view/giohang/viewbill.php";
+            break;
+        case 'contact':
+            if (isset($_POST['btn_contact']) && ($_POST['btn_contact'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $contennt = $_POST['contennt'];
+                question($name, $email, $phone, $contennt);
+                echo '<script>alert("Gửi câu hỏi thành công !")</script>';
+            }
+            include "view/lienhe.php";
             break;
         default:
             include "view/content.php";
