@@ -14,16 +14,16 @@ if (isset($_GET['act'])) {
     switch ($act) {
         case '/':
             case 'dashboard':
-         
+                if (isset($_SESSION['admin'])) {
                     render('dashboard');
+                } else {
+                    header("location: index.php?act=login");
+                }
                 
-                
-              
-              
                 break;
         case "list_product":
 
-
+            if (isset($_SESSION['admin'])) {
 
             if (isset($_POST['btn_filter']) && ($_POST['btn_filter'])) {
                 $idcate = $_POST['idcate'];
@@ -38,7 +38,9 @@ if (isset($_GET['act'])) {
             );
 
 
-
+        } else {
+            header("location: index.php?act=login");
+        }
 
             break;
 
@@ -385,8 +387,39 @@ if (isset($_GET['act'])) {
                 }
                 header('location: index.php?act=list_cmt');
                 break;
-    
+                case 'logout':
+                    session_unset();
+                    header('Location: index.php?act=login');
+                    break;
+                case 'login':
+                    if (isset($_SESSION['admin'])) {
+                        header('location: index.php');
+                    } else {
+                        if (isset($_POST['btn_login']) && $_POST['btn_login']) {
+                            $user_name = $_POST['user_name'];
+                            $password = $_POST['password'];
+                            if ($user_name == null || $password == null) {
+                                echo '<script>alert("Điền đầy đủ thông tin !")</script>';
+                            } else {
+                                $check = check_user_admin($user_name, $password);
+                                if (is_array($check)) {
+                                    $_SESSION['admin'] = $check;
+                                    echo '<script>alert("Đăng nhập thành công!")</script>';
+                                  
+                                    header('Location: index.php');
+                                } else {
+                                    echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
+                                }
+                            }
+                        }
+                        render('login');
+                    }
+                    break;
     }
 } else {
-    render('dashboard');
+    if (isset($_SESSION['admin'])) {
+        render('dashboard');
+    } else {
+        header("location: index.php?act=login");
+    }
 }
