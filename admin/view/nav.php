@@ -217,7 +217,7 @@
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_user" aria-expanded=" false"><i class="mdi mdi-account-box"></i><span class="hide-menu">Khách hàng</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_bill" aria-expanded="false"><i class="mdi mdi-relative-scale"></i><span class="hide-menu">Hóa đơn</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-elements.html" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Bình luận</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?act=list_cmt" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Bình luận</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-elements.html" aria-expanded="false"><i class="mdi mdi-comment-question-outline"></i><span class="hide-menu">Hỏi đáp</span></a></li>
 
 

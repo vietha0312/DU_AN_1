@@ -7,7 +7,7 @@ include "model/thongke.php";
 include "model/hoadon.php";
 include "model/product.php";
 include "model/user.php";
-
+include "model/binhluan.php";
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -368,6 +368,24 @@ if (isset($_GET['act'])) {
 
 
             break;
+            case 'list_cmt':
+              
+                    $listcmt = loadall_cmt();
+                    render(
+                        'list_comment',
+                        ['listcmt' => $listcmt]
+                    );
+               
+                break;
+                
+            case 'delete_cmt':
+                if (isset($_GET['idcmt']) && ($_GET['idcmt']) > 0) {
+                    $id_cmt = $_GET['idcmt'];
+                    remove_cmt($id_cmt);
+                }
+                header('location: index.php?act=list_cmt');
+                break;
+    
     }
 } else {
     render('dashboard');

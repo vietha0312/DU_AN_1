@@ -186,6 +186,60 @@ $ds_loai = loadall_cate(); ?>
                     </div>
                 </div>
 
+
+                <div class="col-xl-12 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Biểu đồ thống kê Doanh thu </h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                        <script>
+                            <?php $thang = 12;
+                            $dau1  ?>
+                            const ctx = document.getElementById('myChart');
+
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: [
+                                        'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                                    ],
+                                    datasets: [{
+                                        label: 'Tháng',
+                                        data: [
+                                            <?php for ($i = 1; $i <= $thang; $i++) {
+                                                $a = tungthang($i);
+                                                if ($i == $thang) {
+                                                    $dau1 = "";
+                                                } else {
+                                                    $dau1 = ",";
+                                                };
+                                            ?>
+                                                <?= $a ?> <?= $dau1 ?>
+                                            <?php
+                                            } ?>
+                                        ],
+                                        fill: false,
+                                        tension: 0.1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>      
                     </div>
                 </div>
             </div>
