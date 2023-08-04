@@ -10,6 +10,7 @@
     <?php
     if (is_array($one_bill)) {
         extract($one_bill);
+        
     }
     ?>
     <div class="page-wrapper">

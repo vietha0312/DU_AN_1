@@ -377,7 +377,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $cart_detail = loadall_cart($_SESSION['idbill']);
             error_reporting(0);
 
-
+            if ($payment == 2 || $payment == 3) {
+                $_SESSION['pay'] = [$payment, $total_amount, $bill_code];
+                header('location: view/payonl.php');
+            } else {
+                $_SESSION['check'] = 1;
+            }
             $_SESSION['check'] = 1;
 
             error_reporting(E_ALL);
@@ -386,6 +391,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/giohang/billconfirm.php";
             }
             break;
+            case 'pay':
+                include "view/payonl.php";
+                break;
         case 'question':
             if (isset($_POST['btn_question']) && ($_POST['btn_question'])) {
                 $name = $_POST['name'];
@@ -403,10 +411,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $bill_code = $randomNum;
                 $id_user = $_SESSION['user']['id_user'];
                 $user_name = $_SESSION['user']['user_name'];
+              
+              $order_date = date('Y/m/d h:i:s', time());
 
-                $order_date = date('Y/m/d h:i:s', time());
-
-                $total_amount = total_amount();
+            $total_amount = total_amount();
 
                 if ($total_amount > 0) {
                     $_SESSION['idbill'] = $idbill = insert_bill($bill_code, $id_user, $user_name, $full_name, $address, $phone, $email, $payment, $order_date, $total_amount);
