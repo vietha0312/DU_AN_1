@@ -59,10 +59,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/sanpham/sanpham.php";
             }
             break;
-
-            // CONTROLLER ĐĂNG KÝ TÀI KHOẢN:
-
-        case "register":
+     case "register":
             if (isset($_POST['btn_register']) && $_POST['btn_register']) {
                 $user_name = $_POST['user_name'];
                 $full_name = $_POST['full_name'];
@@ -128,7 +125,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $result = getUserEmail($email);
                     $code = substr(rand(0, 999999), 0, 6);
                     $title = "Tìm lại mật khẩu của bạn";
-                    $content = "<p>Xin chào, chúng tôi đã nhận được yêu cầu đặt lại mật khẩu UltraPhone của bạn.<br>
+                    $content = "<p>Xin chào, chúng tôi đã nhận được yêu cầu đặt lại mật khẩu  của bạn.<br>
                                 Nhập mã sau đây để đặt lại mật khẩu: <span style='color: black; font-weight: 600'>" . $code . "</span></p>";
                     $mail->sendMail($title, $content, $email);
                     $_SESSION['mail'] = $email;
@@ -138,13 +135,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include 'view/nguoidung/forgotpass.php';
             break;
-            // Quên mật khẩu: Nhập mã xác minh mã được gửi qua Email
-        case 'verification':
+         
+            case 'verification':
             include "view/nguoidung/verification.php";
             break;
 
-            // Quên mật khẩu: Tạo mật khẩu mới để đăng nhập
-        case 'changePass':
+           case 'changePass':
             if (isset($_POST['btn_changePass'])) {
                 $error = array();
                 $password = $_POST['newpass'];
@@ -153,7 +149,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $error['fail'] = 'Nhập lại mật khẩu không khớp !';
                 } else {
                     $user = forgetPass($password, $email);
-                    //  echo '<script>alert("Đổi mật khẩu thành công! Vui lòng đăng nhập")</script>';
+                   
                     header("location: index.php?act=login");
                     $noti_success = "Đổi mật khẩu thành công! Vui lòng đăng nhập để mua hàng và thực hiện các chức năng khác.";
                 }
@@ -161,8 +157,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/nguoidung/changePass.php";
             break;
 
-            // CONTROLLER THÔNG TIN TÀI KHOẢN: 
-            // thông tin tài khoản
 
         case 'myaccount':
             if (isset($_SESSION['user'])) {
@@ -182,7 +176,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     update_user($id_user, $img_user, $full_name, $sex, $email_user, $address, $phone_user);
                     $_SESSION['user'] = check_user($user_name, $password);
                     echo '<script>alert("Thay đổi thông tin thành công!")</script>';
-                    // header("location: index.php?act=myaccount");
+                 
                 }
                 if (isset($_POST['btn_pass'])) {
                     $user_name = $_SESSION['user']['user_name'];
