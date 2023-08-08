@@ -18,7 +18,7 @@
     ?>
 
     <div class="card mb-4">
-        <div class="card-header cart text-primary fw-bold">Thông tin đơn hàng</div>
+        <div class="card-header cart text-white fw-bold">Thông tin đơn hàng</div>
         <div class="card-body">
             <table class="table table-bordered">
                 <tr>
@@ -54,7 +54,7 @@
 
     <form action="index.php?act=billconfirm" method="post">
         <div class="card">
-            <div class="card-header cart text-primary fw-bold">Thông tin đặt hàng</div>
+            <div class="card-header cart text-white fw-bold">Thông tin đặt hàng</div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
@@ -92,11 +92,11 @@
         </div>
 
         <div class="card mt-4 mb-4">
-            <div class="card-header cart text-primary fw-bold">Phương thức thanh toán</div>
+            <div class="card-header cart text-white fw-bold">Phương thức thanh toán</div>
             <div class="card-body">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="payment" id="inlineRadio1" checked>
-                    <span class="text-primary fw-bold"><?php if ($payment == 1) {
+                    <span class="text-white fw-bold"><?php if ($payment == 1) {
                                                             echo "Thanh toán khi nhận hàng ";
                                                         } else if ($payment == 2) {
                                                             echo "Chuyển khoản ngân hàng";

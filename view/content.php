@@ -252,7 +252,7 @@
                           <input type="hidden" name="name_pro" value="<?php echo $pro['name_pro'] ?>" />
                           <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>" />
                           <input type="hidden" name="price" value="<?php echo $pro['price'] ?>" />
-                          <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
+                          <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
 
                         </form>
                       </div>
@@ -309,7 +309,7 @@
                           <input type="hidden" name="name_pro" value="<?php echo $pro['name_pro'] ?>" />
                           <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>" />
                           <input type="hidden" name="price" value="<?php echo $pro['price'] ?>" />
-                          <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
+                          <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
 
                         </form>
                       </div>
@@ -383,7 +383,7 @@
 
                           <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>" />
                           <input type="hidden" name="price" value="<?php echo $pro['price'] ?>" />
-                          <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
+                          <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
 
                         </form>
                       </div>
@@ -503,7 +503,7 @@
 
                         <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>" />
                         <input type="hidden" name="price" value="<?php echo $pro['price'] ?>" />
-                        <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
+                        <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
 
                       </form>
                     </div>

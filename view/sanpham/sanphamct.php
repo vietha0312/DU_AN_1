@@ -77,7 +77,7 @@
                                         <input type="hidden" name="name_pro" value="<?php echo $one_pro['name_pro'] ?>">
                                         <input type="hidden" name="img_pro" value="<?php echo $one_pro['img_pro'] ?>">
                                         <input type="hidden" name="price" value="<?php echo $one_pro['price'] ?>">
-                                        <input type="submit" name="addtocart" class="addtocart" value="Thêm giỏ hàng">
+                                        <input type="submit" name="addtocart" class="addtocart btn btn-outline-primary mt-3" value="Thêm giỏ hàng">
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
                                                 <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>">
                                                 <input type="hidden" name="price" value="<?php echo $pro['price'] ?>">
                                                 <li>
-                                                    <input type="submit" class="addtocart" name="addtocart" value="Thêm vào giỏ">
+                                                    <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
                                                 </li>
                                                 <li>
                                                     <a class="jb-sp_link" href="#"><i class="fa fa-copy"></i></a>
@@ -250,7 +250,7 @@
                                                 <input type="hidden" name="img_pro" value="<?php echo $pro['img_pro'] ?>">
                                                 <input type="hidden" name="price" value="<?php echo $pro['price'] ?>">
                                                 <li class="list-inline-item">
-                                                    <input type="submit" class="addtocart btn btn-primary" name="addtocart" value="Thêm vào giỏ">
+                                                    <input type="submit" class="addtocart btn btn-outline-primary" name="addtocart" value="Thêm vào giỏ">
                                                 </li>
                                                 <li class="list-inline-item">
                                                     <a class="jb-sp_link" href="#"><i class="fa fa-copy"></i></a>

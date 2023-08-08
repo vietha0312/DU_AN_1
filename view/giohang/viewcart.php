@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="wrap-btn-order mt-4">
-                        <input type="submit" class="btn btn-primary" href="index.php?act=bill" value="Xác nhận đặt hàng">
+                        <input type="submit" class="btn btn-outline-primary" href="index.php?act=bill" value="Xác nhận đặt hàng">
                     <?php } else { ?>
                         <h3 class="text-danger">Giỏ hàng trống. Vui lòng thêm sản phẩm để đặt hàng!</h3>
                         <div class="wrap-btn-order mt-4">
